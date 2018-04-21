@@ -500,13 +500,8 @@ public class FreeColXMLReader extends StreamReaderDelegate
         List<T> list = new ArrayList<>(length);
         for (int x = 0; x < length; x++) {
             try {
-                final String value = getAttribute("x" + x, (String)null);
-                T object = null;
-                if (value != null) {
-                    Constructor<T> c = type.getConstructor(type);
-                    object = c.newInstance(new Object[] {value});
-                }
-                list.add(object);
+                T object = object(type, x);
+				list.add(object);
             } catch (IllegalAccessException|InstantiationException
                 |InvocationTargetException|NoSuchMethodException e) {
                 throw new RuntimeException(e);
@@ -516,6 +511,18 @@ public class FreeColXMLReader extends StreamReaderDelegate
         closeTag(tag);
         return list;
     }
+
+	private <T> T object(Class<T> type, int x) throws java.lang.NoSuchMethodException, java.lang.SecurityException,
+			java.lang.InstantiationException, java.lang.IllegalAccessException, java.lang.IllegalArgumentException,
+			java.lang.reflect.InvocationTargetException {
+		final String value = getAttribute("x" + x, (String) null);
+		T object = null;
+		if (value != null) {
+			Constructor<T> c = type.getConstructor(type);
+			object = c.newInstance(new Object[] { value });
+		}
+		return object;
+	}
 
     /**
      * Reads an XML-representation of a list of

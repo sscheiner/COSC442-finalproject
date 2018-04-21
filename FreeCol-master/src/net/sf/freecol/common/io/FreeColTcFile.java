@@ -65,20 +65,20 @@ public class FreeColTcFile extends FreeColModFile {
         ResourceMapping result = new ResourceMapping();
         try {
             if (getParent() != null) {
-                final FreeColTcFile parentTcData = new FreeColTcFile(getParent());
-                result.addAll(parentTcData.getResourceMapping());
+                FreeColTcFile parentTcData = parentTcData(result);
             }
-            // Add the local data *after* the parent data so that the local
-            // values can override (eventual call is Map.putAll).
-            // Note that FreeColDataFile.getResourceMapping logs the load,
-            // and thus the log messages will appear to be in the reverse
-            // order, which mislead me until looking at the code.
-            result.addAll(super.getResourceMapping());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         return result;
     }
+
+	private FreeColTcFile parentTcData(ResourceMapping result) throws java.io.IOException {
+		final FreeColTcFile parentTcData = new FreeColTcFile(getParent());
+		result.addAll(parentTcData.getResourceMapping());
+		result.addAll(super.getResourceMapping());
+		return parentTcData;
+	}
 
     /**
      * Get the file filter to select TC files.

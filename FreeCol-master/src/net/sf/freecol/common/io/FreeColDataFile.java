@@ -123,15 +123,10 @@ public class FreeColDataFile {
      */
     public static List<String> getFileNames(String prefix, String suffix,
                                             Locale locale) {
-        String language = locale.getLanguage();
-        String country = locale.getCountry();
-        String variant = locale.getVariant();
-
-        List<String> result = new ArrayList<>(4);
-
-        if (!language.isEmpty()) language = "_" + language;
-        if (!country.isEmpty()) country = "_" + country;
-        if (!variant.isEmpty()) variant = "_" + variant;
+        String language = language(locale);
+		String country = country(locale);
+		String variant = variant(locale);
+		List<String> result = new ArrayList<>(4);
 
         result.add(prefix + suffix);
         String filename = prefix + language + suffix;
@@ -142,6 +137,27 @@ public class FreeColDataFile {
         if (!result.contains(filename)) result.add(filename);
         return result;
     }
+
+	private static String variant(Locale locale) {
+		String variant = locale.getVariant();
+		if (!variant.isEmpty())
+			variant = "_" + variant;
+		return variant;
+	}
+
+	private static String country(Locale locale) {
+		String country = locale.getCountry();
+		if (!country.isEmpty())
+			country = "_" + country;
+		return country;
+	}
+
+	private static String language(Locale locale) {
+		String language = locale.getLanguage();
+		if (!language.isEmpty())
+			language = "_" + language;
+		return language;
+	}
 
     /**
      * Get a list of candidate resource file names for a given locale.
@@ -208,9 +224,10 @@ public class FreeColDataFile {
      *     there is no resource mapping file.
      */
     public ResourceMapping getResourceMapping() {
-        final Properties properties = new Properties();
-        LogBuilder lb = new LogBuilder(64);
-        lb.add("Resource mapping");
+        List<String> miss = miss();
+		final Properties properties = new Properties();
+        LogBuilder lb = lb();
+		lb.add("Resource mapping");
         lb.mark();
         for (String fileName : getResourceFileNames()) {
             try (
@@ -237,24 +254,17 @@ public class FreeColDataFile {
             if (value.startsWith(resourceScheme)) {
                 todo.add(key);
             } else {
-                URI uri = getURI(value);
-                if (uri != null) {
-                    rm.setKey(key);
-                    ResourceFactory.createResource(uri, rm);
-                }
+                URI uri = uri(rm, key, value);
             }
         }
         boolean progress = true;
-        List<String> miss = new ArrayList<>();
         while (progress && !todo.isEmpty()) {
-            miss.clear();
             progress = false;
             while (!todo.isEmpty()) {
                 final String key = todo.remove(0);
                 final String value = properties.getProperty(key)
                     .substring(resourceScheme.length());
                 if (!rc.duplicateResource(value, key)) {
-                    miss.add(key);
                 } else {
                     progress = true;
                 }
@@ -268,6 +278,65 @@ public class FreeColDataFile {
         if (lb.grew()) lb.log(logger, Level.INFO);
         return rc;
     }
+
+	private List<String> miss() {
+		final Properties properties = new Properties();
+		ResourceMapping rc = new ResourceMapping();
+		List<String> todo = new ArrayList<>();
+		Enumeration<?> pn = properties.propertyNames();
+		while (pn.hasMoreElements()) {
+			final String key = (String) pn.nextElement();
+			final String value = properties.getProperty(key);
+			if (value.startsWith(resourceScheme)) {
+				todo.add(key);
+			} else {
+			}
+		}
+		boolean progress = true;
+		List<String> miss = new ArrayList<>();
+		progress = progress(properties, rc, todo, progress, miss);
+		return miss;
+	}
+
+	private boolean progress(final Properties properties, ResourceMapping rc, List<String> todo, boolean progress,
+			List<String> miss) {
+		while (progress && !todo.isEmpty()) {
+			miss.clear();
+			progress = false;
+			while (!todo.isEmpty()) {
+				final String key = todo.remove(0);
+				final String value = properties.getProperty(key).substring(resourceScheme.length());
+				if (!rc.duplicateResource(value, key)) {
+					miss.add(key);
+				} else {
+					progress = true;
+				}
+			}
+			todo.addAll(miss);
+		}
+		return progress;
+	}
+
+	private LogBuilder lb() {
+		LogBuilder lb = new LogBuilder(64);
+		lb.mark();
+		if (lb.grew()) {
+		}
+		return lb;
+	}
+
+	private URI uri(ResourceMapper rm, final String key, final String value) {
+		URI uri = getURI(value);
+		if (uri != null) {
+			rm(rm, key, uri);
+		}
+		return uri;
+	}
+
+	private void rm(ResourceMapper rm, final String key, URI uri) {
+		rm.setKey(key);
+		ResourceFactory.createResource(uri, rm);
+	}
 
     /**
      * Make a <code>FileFilter</code> for a set of file endings.

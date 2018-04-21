@@ -63,9 +63,11 @@ import net.sf.freecol.common.model.Stance;
 import net.sf.freecol.common.model.Specification;
 import net.sf.freecol.common.model.Tension;
 import net.sf.freecol.common.model.Tile;
+import net.sf.freecol.common.model.TradeRoute;
 import net.sf.freecol.common.model.Unit;
 import net.sf.freecol.common.networking.Connection;
 import net.sf.freecol.common.networking.DOMMessage;
+import net.sf.freecol.common.networking.SetTradeRoutesMessage;
 import net.sf.freecol.common.option.BooleanOption;
 import net.sf.freecol.common.option.OptionGroup;
 import static net.sf.freecol.common.util.CollectionUtils.*;
@@ -1284,4 +1286,41 @@ public final class FreeColServer {
     public void shutdown() {
         server.shutdown();
     }
+
+	/**
+	 * Handle a "setTradeRoutes"-message.
+	 * @param connection  The <code>Connection</code> message was received on.
+	 * @param tradeRoutes
+	 * @return  Null, or an error <code>Element</code> on failure.
+	 */
+	public Element handle(Connection connection, List<TradeRoute> tradeRoutes) {
+		final ServerPlayer serverPlayer = getPlayer(connection);
+		final Game game = getGame();
+		String errors = "";
+		for (TradeRoute tradeRoute : tradeRoutes) {
+			if (tradeRoute.getId() == null || !SetTradeRoutesMessage.hasPrefix(tradeRoute)) {
+				errors += "Bogus route: " + tradeRoute.getId() + ". ";
+				continue;
+			}
+			String id = SetTradeRoutesMessage.removePrefix(tradeRoute);
+			TradeRoute realRoute;
+			try {
+				realRoute = serverPlayer.getOurFreeColGameObject(id, TradeRoute.class);
+			} catch (Exception e) {
+				errors += e.getMessage() + ". ";
+				continue;
+			}
+		}
+		if (errors != null && !errors.isEmpty())
+			return DOMMessage.clientError(errors);
+		List<TradeRoute> newRoutes = new ArrayList<>();
+		for (TradeRoute tradeRoute : tradeRoutes) {
+			TradeRoute realRoute = game.getFreeColGameObject(SetTradeRoutesMessage.removePrefix(tradeRoute),
+					TradeRoute.class);
+			realRoute.updateFrom(tradeRoute);
+			newRoutes.add(realRoute);
+			tradeRoute.dispose();
+		}
+		return getInGameController().setTradeRoutes(serverPlayer, newRoutes);
+	}
 }

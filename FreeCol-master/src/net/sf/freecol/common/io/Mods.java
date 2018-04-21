@@ -51,8 +51,8 @@ public class Mods {
      */
     private static void loadModDirectory(File directory) {
         if (directory != null && directory.isDirectory()) {
-            LogBuilder lb = new LogBuilder(64);
-            lb.add("In ", directory.getPath(), " found mod:");
+            LogBuilder lb = lb();
+			lb.add("In ", directory.getPath(), " found mod:");
             lb.mark();
             for (File f : directory.listFiles(FreeColModFile.getFileFilter())) {
                 try {
@@ -66,6 +66,14 @@ public class Mods {
             if (lb.grew()) lb.log(logger, Level.INFO);
         }
     }
+
+	private static LogBuilder lb() {
+		LogBuilder lb = new LogBuilder(64);
+		lb.mark();
+		if (lb.grew()) {
+		}
+		return lb;
+	}
 
     /**
      * Require all mods to be loaded.  This must be delayed until

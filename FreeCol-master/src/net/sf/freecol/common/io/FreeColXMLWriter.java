@@ -40,6 +40,7 @@ import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
@@ -228,16 +229,18 @@ public class FreeColXMLWriter implements Closeable, XMLStreamWriter {
         }
 
         if (this.outputWriter != null) {
-            TransformerFactory factory;
-            Transformer transformer;
-            StreamSource source;
-            StreamResult result;
-            try {
+            Transformer transformer = null;
+			try {
+				transformer = transformer();
+			} catch (TransformerFactoryConfigurationError | TransformerException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			StreamSource source;
+            StreamResult result = result();
+			try {
                 source = new StreamSource(new StringReader(this.stringWriter
                                                                .toString()));
-                result = new StreamResult(this.outputWriter);
-                factory = TransformerFactory.newInstance();
-                transformer = factory.newTransformer();
                 for (int i = 0; i < indentProps.length; i += 2) {
                     transformer.setOutputProperty(indentProps[i],
                                                   indentProps[i+1]);
@@ -246,13 +249,40 @@ public class FreeColXMLWriter implements Closeable, XMLStreamWriter {
             } catch (TransformerException te) {
                 logger.log(Level.WARNING, "Transformer fail", te);
             }
-            try {
-                this.outputWriter.flush();
-            } catch (IOException ioe) {
-                logger.log(Level.WARNING, "Flush fail", ioe);
-            }
         }
     }
+
+	private Transformer transformer() throws javax.xml.transform.TransformerFactoryConfigurationError, TransformerException {
+		TransformerFactory factory = factory();
+		Transformer transformer = null;
+		try {
+			transformer = factory.newTransformer();
+		} catch (TransformerException te) {
+			logger.log(Level.WARNING, "Transformer fail", te);
+		}
+		return transformer;
+	}
+
+	private TransformerFactory factory() throws javax.xml.transform.TransformerFactoryConfigurationError, TransformerException {
+		TransformerFactory factory = null;
+		factory = TransformerFactory.newInstance();
+		return factory;
+	}
+
+	private StreamResult result() {
+		StreamResult result;
+		result = new StreamResult(this.outputWriter);
+		outputWriter();
+		return result;
+	}
+
+	private void outputWriter() {
+		try {
+			this.outputWriter.flush();
+		} catch (IOException ioe) {
+			logger.log(Level.WARNING, "Flush fail", ioe);
+		}
+	}
 
 
     /**
