@@ -20,6 +20,7 @@
 package net.sf.freecol.common;
 
 import java.security.SecureRandom;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
@@ -57,7 +58,9 @@ public class FreeColSeed {
     public static void setFreeColSeed(String arg) {
         try {
             FreeColSeed.freeColSeed = Long.parseLong(arg);
-        } catch (NumberFormatException nfe) {}
+        } catch (NumberFormatException nfe) {
+        	 logger.log(Level.WARNING, "Exception while formatting numbers.", nfe);
+        }
     }
 
     /**

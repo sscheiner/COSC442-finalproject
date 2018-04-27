@@ -23,9 +23,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
-
 import java.util.Arrays;
 import java.util.Locale;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -161,7 +161,9 @@ public class FreeColDebugger {
             default:
                 return false;
             }
-        } catch (NumberFormatException nfe) {}
+        } catch (NumberFormatException nfe) {
+        	 logger.log(Level.WARNING, "Exception while formatting numbers.", nfe);
+        }
         // end @compat
 
         for (String s : optionValue.split(",")) {
@@ -268,7 +270,9 @@ public class FreeColDebugger {
                 try {
                     fcs.saveGame(new File(".", getDebugRunSave()),
                                  freeColClient.getClientOptions());
-                } catch (IOException e) {}
+                } catch (IOException e) {
+                	 logger.log(Level.WARNING, "Exception while reading data file.", e);
+                }
             }
             freeColClient.quit();
         }
@@ -377,7 +381,7 @@ public class FreeColDebugger {
         ) {
             prs.println(msg);
         } catch (Exception e) {
-            ; // Ignore
+             // Ignore
         }
     }
 

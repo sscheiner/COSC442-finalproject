@@ -25,6 +25,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -592,7 +593,9 @@ public class DebugUtils {
                         lb.add("  Client: ", map.getTile(u.getTile().getX(),
                                u.getTile().getY()).getFirstUnit().getId(),
                                "\n");
-                    } catch (NullPointerException npe) {}
+                    } catch (NullPointerException npe) {
+                    	 logger.log(Level.WARNING, "NullPointer Exception.", npe);
+                    }
                     problemDetected = true;
                 } else {
                     Unit cUnit = game.getFreeColGameObject(u.getId(),
@@ -615,7 +618,7 @@ public class DebugUtils {
             Settlement cSettlement = ct.getSettlement();
             if (sSettlement == null) {
                 if (cSettlement == null) {
-                    ;// OK
+                    // OK
                 } else {
                     lb.add("Settlement still present in client: ", cSettlement);
                     problemDetected = true;
@@ -625,7 +628,7 @@ public class DebugUtils {
                     lb.add("Settlement not present in client: ", sSettlement);
                     problemDetected = true;
                 } else if (sSettlement.getId().equals(cSettlement.getId())) {
-                    ;// OK
+                    // OK
                 } else {
                     lb.add("Settlements differ.\n  Server: ",
                         sSettlement.toString(), "\n  Client: ", 
