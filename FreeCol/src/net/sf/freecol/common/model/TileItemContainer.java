@@ -29,7 +29,7 @@ import javax.xml.stream.XMLStreamException;
 
 import net.sf.freecol.common.io.FreeColXMLReader;
 import net.sf.freecol.common.io.FreeColXMLWriter;
-import net.sf.freecol.common.model.Direction;
+
 import net.sf.freecol.common.model.Map.Layer;
 import static net.sf.freecol.common.util.CollectionUtils.*;
 
@@ -659,9 +659,9 @@ public class TileItemContainer extends FreeColGameObject {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder(64);
-        sb.append("[").append(getId());
-        for (TileItem item : tileItems) sb.append(" ").append(item);
-        sb.append("]");
+        sb.append('[').append(getId());
+        for (TileItem item : tileItems) sb.append(' ').append(item);
+        sb.append(']');
         return sb.toString();
     }
 

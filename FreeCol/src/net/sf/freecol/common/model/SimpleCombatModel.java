@@ -267,7 +267,6 @@ public class SimpleCombatModel extends CombatModel {
             }
 
         } else if (combatIsBombard(attacker, defender)) {
-            ; // Bombard strength handled by getOffensePower
 
         } else {
             throw new IllegalArgumentException("Bogus combat");
@@ -361,7 +360,6 @@ public class SimpleCombatModel extends CombatModel {
         }
 
         if (combatIsAttackMeasurement(attacker, defender)) {
-            ; // No defender information available
 
         } else if (combatIsSettlementAttack(attacker, defender)) {
             // Settlement present, apply bombardment bonus

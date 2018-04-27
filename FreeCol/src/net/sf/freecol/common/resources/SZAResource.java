@@ -98,7 +98,7 @@ public class SZAResource extends Resource implements Resource.Preloadable {
      */
     public SimpleZippedAnimation getSimpleZippedAnimation(float scale) {
         final SimpleZippedAnimation sza = getSimpleZippedAnimation();
-        if (scale == 1.0f) {
+        if ((Math.abs(scale - 1.0f) < .00000001)) {
             return sza;
         }
         final SimpleZippedAnimation cachedScaledVersion

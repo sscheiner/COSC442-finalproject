@@ -508,9 +508,9 @@ public class ProductionType extends FreeColObject {
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder(64);
-        result.append("[").append(getId()).append(":");
+        result.append('[').append(getId()).append(':');
         if (productionLevel != null) {
-            result.append(" ").append(productionLevel);
+            result.append(' ').append(productionLevel);
         }
         if (unattended) {
             result.append(" unattended");
@@ -531,7 +531,7 @@ public class ProductionType extends FreeColObject {
             int length = result.length();
             result.replace(length - 2, length, "]");
         }
-        result.append("]");
+        result.append(']');
         return result.toString();
     }
 

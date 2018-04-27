@@ -33,6 +33,7 @@ import net.sf.freecol.common.io.FreeColXMLWriter;
 import net.sf.freecol.common.model.Unit.UnitState;
 
 
+
 /**
  * Represents Europe in the game.  Each <code>Player</code> has it's
  * own <code>Europe</code>.

@@ -24,7 +24,7 @@ import javax.xml.stream.XMLStreamException;
 import net.sf.freecol.common.i18n.Messages;
 import net.sf.freecol.common.io.FreeColXMLReader;
 import net.sf.freecol.common.io.FreeColXMLWriter;
-import net.sf.freecol.common.model.Stance;
+
 import net.sf.freecol.common.util.Utils;
 
 
@@ -176,8 +176,8 @@ public class StanceTradeItem extends TradeItem {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder(16);
-        sb.append("[").append(getId())
-            .append(" ").append(stance).append("]");
+        sb.append('[').append(getId())
+            .append(' ').append(stance).append(']');
         return sb.toString();
     }
 

@@ -272,13 +272,13 @@ public abstract class ListOption<T> extends AbstractOption<List<AbstractOption<T
                 break;
             case TEMPLATE_TAG:
                 xr.nextTag();
-                template = (AbstractOption<T>)readOption(xr);
+                template = readOption(xr);
                 xr.closeTag(TEMPLATE_TAG);
                 break;
             default:
                 AbstractOption<T> op = null;
                 try {
-                    op = (AbstractOption<T>)readOption(xr);
+                    op = readOption(xr);
                 } catch (XMLStreamException xse) {
                     logger.log(Level.WARNING, "Invalid option at: " + tag, xse);
                     xr.closeTag(tag);
@@ -293,15 +293,15 @@ public abstract class ListOption<T> extends AbstractOption<List<AbstractOption<T
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder(64);
-        sb.append("[").append(getId());
+        sb.append('[').append(getId());
         if (value != null) {
             sb.append(" [");
             for (AbstractOption<T> ao : value) {
-                sb.append(" ").append(ao);
+                sb.append(' ').append(ao);
             }
             sb.append(" ]");
         }
-        sb.append("]");
+        sb.append(']');
         return sb.toString();
     }
 }

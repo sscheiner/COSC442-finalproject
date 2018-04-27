@@ -22,6 +22,7 @@ package net.sf.freecol.common.option;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.sound.sampled.AudioSystem;
@@ -105,7 +106,9 @@ public class AudioMixerOption extends AbstractOption<AudioMixerOption.MixerWrapp
         Mixer mixer = null;
         try {
             mixer = AudioSystem.getMixer(null);
-        } catch (IllegalArgumentException e) {}
+        } catch (IllegalArgumentException e) {
+        	logger.log(Level.WARNING, "Exception while instantiating Mixer", e);
+        }
         AUTODETECTED_MIXER = mixer;
     }
 

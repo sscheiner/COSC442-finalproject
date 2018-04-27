@@ -2007,7 +2007,6 @@ public final class Specification {
                     if (roleId == null) {
                         au.setRoleId(DEFAULT_ROLE_ID);
                     } else if (au.getRoleId().startsWith("model.role.")) {
-                        ; // OK
                     } else if ("DEFAULT".equals(au.getRoleId())) {
                         au.setRoleId(DEFAULT_ROLE_ID);
                     } else if ("DRAGOON".equals(au.getRoleId())) {

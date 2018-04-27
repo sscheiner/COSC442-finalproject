@@ -19,6 +19,7 @@
 
 package net.sf.freecol.common.model;
 
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -44,6 +45,7 @@ import static net.sf.freecol.common.util.CollectionUtils.*;
 
 import net.sf.freecol.common.util.LogBuilder;
 import net.sf.freecol.common.util.RandomChoice;
+
 
 
 /**
@@ -623,7 +625,9 @@ public class Colony extends Settlement implements Nameable, TradeLocation {
     public <T extends WorkLocation> T getWorkLocationWithAbility(String ability,
         Class<T> returnClass) {
         WorkLocation wl = getWorkLocationWithAbility(ability);
-        if (wl != null) try { return returnClass.cast(wl); } catch (ClassCastException cce) {};
+        if (wl != null) try { return returnClass.cast(wl); } catch (ClassCastException cce) {
+        	logger.log(Level.WARNING, "Exception returning Work Location", cce);
+        }
         return null;
     }
 
@@ -652,7 +656,9 @@ public class Colony extends Settlement implements Nameable, TradeLocation {
     public <T extends WorkLocation> T getWorkLocationWithModifier(String modifier,
         Class<T> returnClass) {
         WorkLocation wl = getWorkLocationWithModifier(modifier);
-        if (wl != null) try { return returnClass.cast(wl); } catch (ClassCastException cce) {}
+        if (wl != null) try { return returnClass.cast(wl); } catch (ClassCastException cce) {
+        	logger.log(Level.WARNING, "Exception returning Work Location", cce);
+        }
         return null;
     }
     

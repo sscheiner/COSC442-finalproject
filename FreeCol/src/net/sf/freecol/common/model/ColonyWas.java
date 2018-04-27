@@ -26,6 +26,8 @@ import java.util.logging.Logger;
 import net.sf.freecol.common.model.Colony.ColonyChangeEvent;
 
 
+
+
 /**
  * Helper container to remember a colony state prior to some
  * change, and fire off any consequent property changes.

@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.logging.Logger;
 
-import net.sf.freecol.common.model.Direction;
+
 import net.sf.freecol.common.model.Map.Position;
 import net.sf.freecol.common.option.MapGeneratorOptions;
 import net.sf.freecol.common.option.OptionGroup;
@@ -439,7 +439,7 @@ public class LandMap {
         if (size >= minSize) {
             for (x = 0; x < width; x++) {
                 for (y = 0; y < height; y++) {
-                    if (newLand[x][y] == true) {
+                    if (newLand[x][y]) {
                         map[x][y] = true;
                         numberOfLandTiles++;
                     }

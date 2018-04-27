@@ -93,12 +93,10 @@ public class DemandTributeMessage extends DOMMessage {
         } catch (Exception e) {
             return DOMMessage.clientError(e.getMessage());
         }
-        if (unit.isArmed()
-            || unit.hasAbility(Ability.DEMAND_TRIBUTE)) {
-            ; // ok
-        } else {
-            return DOMMessage.clientError("Unit is neither armed"
-                + " nor able to demand tribute: " + unitId);
+        if (!(unit.isArmed())
+            && !(unit.hasAbility(Ability.DEMAND_TRIBUTE))) {
+        	return DOMMessage.clientError("Unit is neither armed"
+                     + " nor able to demand tribute: " + unitId);
         }
 
         Tile tile;

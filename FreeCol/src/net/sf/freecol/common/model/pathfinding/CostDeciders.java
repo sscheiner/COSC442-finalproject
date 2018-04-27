@@ -94,9 +94,7 @@ public final class CostDeciders {
                            Location newLocation, int movesLeft) {
             int cost = super.getCost(unit, oldLocation, newLocation, movesLeft);
             if (cost != ILLEGAL_MOVE && cost != Map.INFINITY) {
-                if (newLocation instanceof Europe) {
-                    ; // ok
-                } else if (!newLocation.getTile().isExploredBy(unit.getOwner())) {
+                if (!newLocation.getTile().isExploredBy(unit.getOwner()) && !(newLocation instanceof Europe)) {
                     return ILLEGAL_MOVE;
                 }
             }

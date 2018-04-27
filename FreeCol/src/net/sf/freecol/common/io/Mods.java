@@ -29,7 +29,6 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import net.sf.freecol.common.io.FreeColModFile;
 import net.sf.freecol.common.util.LogBuilder;
 
 

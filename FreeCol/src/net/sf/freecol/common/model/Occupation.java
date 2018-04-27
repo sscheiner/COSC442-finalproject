@@ -181,8 +181,8 @@ public class Occupation {
         StringBuilder sb = new StringBuilder(32);
         sb.append("[Occupation ").append(workLocation);
             //.append(" ").append(productionType)
-        if (workType != null) sb.append(" ").append(workType.getSuffix());
-        sb.append("]");
+        if (workType != null) sb.append(' ').append(workType.getSuffix());
+        sb.append(']');
         return sb.toString();
     }
 }

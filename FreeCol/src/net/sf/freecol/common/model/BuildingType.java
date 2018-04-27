@@ -30,6 +30,7 @@ import net.sf.freecol.common.io.FreeColXMLWriter;
 import net.sf.freecol.common.model.UnitLocation.NoAddReason;
 
 
+
 /**
  * Encapsulates data common to all instances of a particular kind of
  * {@link Building}, such as the number of workplaces, and the types

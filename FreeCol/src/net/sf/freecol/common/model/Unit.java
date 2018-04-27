@@ -36,8 +36,8 @@ import net.sf.freecol.client.gui.GUI;
 import net.sf.freecol.common.i18n.Messages;
 import net.sf.freecol.common.io.FreeColXMLReader;
 import net.sf.freecol.common.io.FreeColXMLWriter;
-import net.sf.freecol.common.model.CombatModel;
-import net.sf.freecol.common.model.Direction;
+
+
 import net.sf.freecol.common.model.pathfinding.CostDecider;
 import net.sf.freecol.common.model.pathfinding.CostDeciders;
 import net.sf.freecol.common.model.pathfinding.GoalDecider;
@@ -2363,9 +2363,9 @@ public class Unit extends GoodsLocation
         int remainder = getMovesLeft() % 3;
         if (quotient > 0 || remainder == 0) sb.append(quotient);
         if (remainder > 0) {
-            sb.append("(").append(remainder).append("/3) ");
+            sb.append('(').append(remainder).append("/3) ");
         }
-        sb.append("/").append(getInitialMovesLeft() / 3);
+        sb.append('/').append(getInitialMovesLeft() / 3);
         return sb.toString();
     }
 
@@ -2518,7 +2518,6 @@ public class Unit extends GoodsLocation
         Location ret = getTile();
         if (isOnCarrier()) {
             if (ret != null) {
-                ; // OK
             } else if (carrier.getDestination() == null) {
                 ret = null;
             } else if (carrier.getDestination() instanceof Map) {
@@ -2530,7 +2529,6 @@ public class Unit extends GoodsLocation
             }
         } else if (isNaval()) {
             if (ret != null) {
-                ; // OK
             } else if (getDestination() == null
                 || getDestination() instanceof Map) {
                 ret = getFullEntryLocation();
@@ -3775,7 +3773,6 @@ public class Unit extends GoodsLocation
 
         // Move out of the old location.
         if (location == null) {
-            ; // do nothing
         } else if (!location.remove(this)) {//-vis
             // "Should not happen" (should always be able to remove)
             throw new RuntimeException("Failed to remove " + this
@@ -3934,11 +3931,11 @@ public class Unit extends GoodsLocation
     @Override
     public String toShortString() {
         StringBuilder sb = new StringBuilder(32);
-        sb.append(getId()).append("-").append(getType().getSuffix());
+        sb.append(getId()).append('-').append(getType().getSuffix());
         if (!hasDefaultRole()) {
-            sb.append("-").append(getRoleSuffix());
+            sb.append('-').append(getRoleSuffix());
             int count = getRoleCount();
-            if (count > 1) sb.append(".").append(count);
+            if (count > 1) sb.append('.').append(count);
         }
         return sb.toString();
     }
@@ -4544,22 +4541,22 @@ public class Unit extends GoodsLocation
      */
     public String toString(String prefix) {
         StringBuilder sb = new StringBuilder(64);
-        sb.append("[").append(prefix).append(getId());
+        sb.append('[').append(prefix).append(getId());
         if (isUninitialized()) {
             sb.append(" uninitialized");
         } else if (isDisposed()) {
             sb.append(" disposed");
         } else {
-            sb.append(" ").append(lastPart(owner.getNationId(), "."))
-                .append(" ").append(getType().getSuffix());
+            sb.append(' ').append(lastPart(owner.getNationId(), "."))
+                .append(' ').append(getType().getSuffix());
             if (!hasDefaultRole()) {
-                sb.append("-").append(getRoleSuffix());
+                sb.append('-').append(getRoleSuffix());
                 int count = getRoleCount();
-                if (count > 1) sb.append(".").append(count);
+                if (count > 1) sb.append('.').append(count);
             }
-            sb.append(" ").append(getMovesAsString());
+            sb.append(' ').append(getMovesAsString());
         }
-        sb.append("]");
+        sb.append(']');
         return sb.toString();
     }
 

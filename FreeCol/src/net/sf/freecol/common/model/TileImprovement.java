@@ -30,7 +30,7 @@ import javax.xml.stream.XMLStreamException;
 
 import net.sf.freecol.common.io.FreeColXMLReader;
 import net.sf.freecol.common.io.FreeColXMLWriter;
-import net.sf.freecol.common.model.Direction;
+
 
 
 /**
@@ -666,12 +666,12 @@ public class TileImprovement extends TileItem implements Named {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder(64);
-        sb.append("[").append(getType().getId());
+        sb.append('[').append(getType().getId());
         if (turnsToComplete > 0) {
             sb.append(" (").append(turnsToComplete).append(" turns left)");
         }
-        if (style != null) sb.append(" ").append(style.getString());
-        sb.append("]");
+        if (style != null) sb.append(' ').append(style.getString());
+        sb.append(']');
         return sb.toString();
     }
 

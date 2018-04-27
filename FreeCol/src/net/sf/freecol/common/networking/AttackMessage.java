@@ -100,16 +100,14 @@ public class AttackMessage extends DOMMessage {
         }
 
         MoveType moveType = unit.getMoveType(tile);
-        if (moveType == MoveType.ENTER_INDIAN_SETTLEMENT_WITH_SCOUT
-            || moveType == MoveType.ENTER_FOREIGN_COLONY_WITH_SCOUT
-            || moveType.isAttack()) {
-            ; // OK
-        } else {
-            return DOMMessage.clientError("Illegal attack move for: " + unitId
-                + " type: " + moveType
-                + " from: " + unit.getLocation().getId()
-                + " to: " + tile.getId());
-        }
+        if (moveType != MoveType.ENTER_INDIAN_SETTLEMENT_WITH_SCOUT
+            && moveType != MoveType.ENTER_FOREIGN_COLONY_WITH_SCOUT
+            && !(moveType.isAttack())) {
+        	return DOMMessage.clientError("Illegal attack move for: " + unitId
+                    + " type: " + moveType
+                    + " from: " + unit.getLocation().getId()
+                    + " to: " + tile.getId());
+        } 
 
         Unit defender = tile.getDefendingUnit(unit);
         if (defender == null) {

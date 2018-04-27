@@ -19,6 +19,7 @@
 
 package net.sf.freecol.common.model;
 
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -63,6 +64,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+
 
 
 /**
@@ -199,7 +201,9 @@ public abstract class FreeColObject
             if (col >= 0) {
                 try {
                     return Integer.parseInt(id.substring(col + 1));
-                } catch (NumberFormatException nfe) {}
+                } catch (NumberFormatException nfe) {
+                	logger.log(Level.WARNING, "Exception formatting ID number.", nfe);
+                }
             }
         }
         return -1;

@@ -319,7 +319,7 @@ public class Connection implements Closeable {
                 this.logWriter.write('\n');
                 this.logWriter.flush();
             } catch (IOException|TransformerException e) {
-                ; // Ignore logging failure
+                    logger.log(Level.WARNING, "Failed to log error", e);// Ignore logging failure
             }
         }
     }

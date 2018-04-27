@@ -19,6 +19,7 @@
 
 package net.sf.freecol.common.model;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
@@ -61,7 +62,9 @@ public class EuropeWas {
                     idMax = id;
                     newUnit = u;
                 }
-            } catch (NumberFormatException nfe) {}
+            } catch (NumberFormatException nfe) {
+            	logger.log(Level.WARNING, "Exception formatting Unit number.", nfe);
+            }
         }
         return newUnit;        
     }

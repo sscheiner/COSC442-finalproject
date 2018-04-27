@@ -371,7 +371,7 @@ public class Game extends FreeColGameObject {
 
         // Garbage collect the FCGOs if enough have been removed.
         if (++removeCount > REMOVE_GC_THRESHOLD) {
-            for (FreeColGameObject fcgo : getFreeColGameObjects());
+            for (FreeColGameObject fcgo : getFreeColGameObjects())
             removeCount = 0;
             System.gc(); // Probably a good opportunity.
         }
@@ -1269,7 +1269,6 @@ public class Game extends FreeColGameObject {
                 UUID u = UUID.fromString(str);
                 this.uuid = u;
             } catch (IllegalArgumentException iae) {
-                ;// Preserve existing uuid
             }
         }
 

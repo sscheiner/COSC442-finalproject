@@ -24,8 +24,8 @@ import javax.xml.stream.XMLStreamException;
 import net.sf.freecol.common.i18n.Messages;
 import net.sf.freecol.common.io.FreeColXMLReader;
 import net.sf.freecol.common.io.FreeColXMLWriter;
-import net.sf.freecol.common.model.Player;
 import net.sf.freecol.common.util.Utils;
+
 
 
 /**
@@ -177,8 +177,8 @@ public class InciteTradeItem extends TradeItem {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder(16);
-        sb.append("[").append(getId())
-            .append(" ").append(victim.getId()).append("]");
+        sb.append('[').append(getId())
+            .append(' ').append(victim.getId()).append(']');
         return sb.toString();
     }
 

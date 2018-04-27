@@ -18,6 +18,7 @@
  */
 
 package net.sf.freecol.common.resources;
+import java.util.*;
 
 import java.awt.Dimension;
 import java.awt.Graphics2D;
@@ -114,7 +115,7 @@ public class ImageResource extends Resource
      */
     public BufferedImage getImage(float scale) {
         final BufferedImage im = getImage();
-        if(scale == 1.0f || im == null)
+        if((Math.abs(scale - 1.0f) < .00000001) || im == null)
             return im;
         return getImage(new Dimension(Math.round(im.getWidth() * scale),
                                       Math.round(im.getHeight() * scale)));
