@@ -2006,24 +2006,24 @@ public final class Specification {
                     String roleId = au.getRoleId();
                     if (roleId == null) {
                         au.setRoleId(DEFAULT_ROLE_ID);
-                    } else if (au.getRoleId().startsWith("model.role.")) {
-                    } else if ("DEFAULT".equals(au.getRoleId())) {
-                        au.setRoleId(DEFAULT_ROLE_ID);
-                    } else if ("DRAGOON".equals(au.getRoleId())) {
-                        au.setRoleId("model.role.dragoon");
-                    } else if ("MISSIONARY".equals(au.getRoleId())) {
-                        au.setRoleId("model.role.missionary");
-                    } else if ("PIONEER".equals(au.getRoleId())) {
-                        au.setRoleId("model.role.pioneer");
-                    } else if ("MISSIONARY".equals(au.getRoleId())) {
-                        au.setRoleId("model.role.missionary");
-                    } else if ("SCOUT".equals(au.getRoleId())) {
-                        au.setRoleId("model.role.scout");
-                    } else if ("SOLDIER".equals(au.getRoleId())) {
-                        au.setRoleId("model.role.soldier");
-                    } else {
-                        au.setRoleId(DEFAULT_ROLE_ID);
-                    }
+                    } else if (!au.getRoleId().startsWith("model.role."))
+						if ("DEFAULT".equals(au.getRoleId())) {
+						    au.setRoleId(DEFAULT_ROLE_ID);
+						} else if ("DRAGOON".equals(au.getRoleId())) {
+						    au.setRoleId("model.role.dragoon");
+						} else if ("MISSIONARY".equals(au.getRoleId())) {
+						    au.setRoleId("model.role.missionary");
+						} else if ("PIONEER".equals(au.getRoleId())) {
+						    au.setRoleId("model.role.pioneer");
+						} else if ("MISSIONARY".equals(au.getRoleId())) {
+						    au.setRoleId("model.role.missionary");
+						} else if ("SCOUT".equals(au.getRoleId())) {
+						    au.setRoleId("model.role.scout");
+						} else if ("SOLDIER".equals(au.getRoleId())) {
+						    au.setRoleId("model.role.soldier");
+						} else {
+						    au.setRoleId(DEFAULT_ROLE_ID);
+						}
                 }
             }
         }

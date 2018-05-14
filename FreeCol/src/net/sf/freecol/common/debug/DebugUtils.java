@@ -617,9 +617,7 @@ public class DebugUtils {
             Settlement sSettlement = t.getSettlement();
             Settlement cSettlement = ct.getSettlement();
             if (sSettlement == null) {
-                if (cSettlement == null) {
-                    // OK
-                } else {
+                if (!(cSettlement == null)) {
                     lb.add("Settlement still present in client: ", cSettlement);
                     problemDetected = true;
                 }
@@ -627,9 +625,7 @@ public class DebugUtils {
                 if (cSettlement == null) {
                     lb.add("Settlement not present in client: ", sSettlement);
                     problemDetected = true;
-                } else if (sSettlement.getId().equals(cSettlement.getId())) {
-                    // OK
-                } else {
+                } else if (!sSettlement.getId().equals(cSettlement.getId())) {
                     lb.add("Settlements differ.\n  Server: ",
                         sSettlement.toString(), "\n  Client: ", 
                         cSettlement.toString(), "\n");

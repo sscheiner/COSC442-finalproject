@@ -162,14 +162,14 @@ public class Resource extends TileItem {
      * @return The final value of quantity.
      */
     public int useQuantity(int usedQuantity) {
-        if (quantity == UNLIMITED) {
-        } else if (quantity >= usedQuantity) {
-            quantity -= usedQuantity;
-        } else {
-            // Shouldn't generally happen.  Do something more drastic here?
-            logger.severe("Insufficient quantity in " + this);
-            quantity = 0;
-        }
+        if (!(quantity == UNLIMITED))
+			if (quantity >= usedQuantity) {
+			    quantity -= usedQuantity;
+			} else {
+			    // Shouldn't generally happen.  Do something more drastic here?
+			    logger.severe("Insufficient quantity in " + this);
+			    quantity = 0;
+			}
         return quantity;
     }
 

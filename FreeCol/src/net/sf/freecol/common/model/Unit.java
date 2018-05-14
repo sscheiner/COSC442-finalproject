@@ -317,10 +317,7 @@ public class Unit extends GoodsLocation
                                          role.getId(), null);
 
         case NATIONAL:
-            if (role.getMaximumCount() > 1) {
-                // If the amount of equipment can vary an equipment
-                // label is required, so fall through into the FULL case.
-            } else {
+            if (!(role.getMaximumCount() > 1)) {
                 return Messages.getUnitLabel(getName(), type.getId(), 1,
                                              owner.getNationId(), role.getId(),
                                              null);
@@ -2517,26 +2514,26 @@ public class Unit extends GoodsLocation
         final Unit carrier = getCarrier();
         Location ret = getTile();
         if (isOnCarrier()) {
-            if (ret != null) {
-            } else if (carrier.getDestination() == null) {
-                ret = null;
-            } else if (carrier.getDestination() instanceof Map) {
-                ret = carrier.getFullEntryLocation();
-            } else if (carrier.getDestination() instanceof Settlement) {
-                ret = carrier.getDestination();
-            } else { // destination must be Europe
-                ret = null;
-            }
+            if (!(ret != null))
+				if (carrier.getDestination() == null) {
+				    ret = null;
+				} else if (carrier.getDestination() instanceof Map) {
+				    ret = carrier.getFullEntryLocation();
+				} else if (carrier.getDestination() instanceof Settlement) {
+				    ret = carrier.getDestination();
+				} else { // destination must be Europe
+				    ret = null;
+				}
         } else if (isNaval()) {
-            if (ret != null) {
-            } else if (getDestination() == null
-                || getDestination() instanceof Map) {
-                ret = getFullEntryLocation();
-            } else if (getDestination() instanceof Settlement) {
-                ret = getDestination();
-            } else {
-                ret = getFullEntryLocation();
-            }
+            if (!(ret != null))
+				if (getDestination() == null
+				    || getDestination() instanceof Map) {
+				    ret = getFullEntryLocation();
+				} else if (getDestination() instanceof Settlement) {
+				    ret = getDestination();
+				} else {
+				    ret = getFullEntryLocation();
+				}
         }
         if (ret != null) return ret;
 
@@ -3772,12 +3769,12 @@ public class Unit extends GoodsLocation
         }
 
         // Move out of the old location.
-        if (location == null) {
-        } else if (!location.remove(this)) {//-vis
-            // "Should not happen" (should always be able to remove)
-            throw new RuntimeException("Failed to remove " + this
-                + " from " + location.getId());
-        }
+        if (!(location == null))
+			if (!location.remove(this)) {//-vis
+			    // "Should not happen" (should always be able to remove)
+			    throw new RuntimeException("Failed to remove " + this
+			        + " from " + location.getId());
+			}
 
         // Move in to the new location.
         if (newLocation == null) {

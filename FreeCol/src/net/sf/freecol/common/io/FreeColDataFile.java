@@ -263,8 +263,7 @@ public class FreeColDataFile {
                 final String key = todo.remove(0);
                 final String value = properties.getProperty(key)
                     .substring(resourceScheme.length());
-                if (!rc.duplicateResource(value, key)) {
-                } else {
+                if (rc.duplicateResource(value, key)) {
                     progress = true;
                 }
             }
@@ -288,7 +287,6 @@ public class FreeColDataFile {
 			final String value = properties.getProperty(key);
 			if (value.startsWith(resourceScheme)) {
 				todo.add(key);
-			} else {
 			}
 		}
 		boolean progress = true;
@@ -319,8 +317,7 @@ public class FreeColDataFile {
 	private LogBuilder lb() {
 		LogBuilder lb = new LogBuilder(64);
 		lb.mark();
-		if (lb.grew()) {
-		}
+		lb.grew();
 		return lb;
 	}
 

@@ -69,8 +69,7 @@ public class Mods {
 	private static LogBuilder lb() {
 		LogBuilder lb = new LogBuilder(64);
 		lb.mark();
-		if (lb.grew()) {
-		}
+		lb.grew();
 		return lb;
 	}
 

@@ -266,9 +266,7 @@ public class SimpleCombatModel extends CombatModel {
                 addLandOffensiveModifiers(attackerUnit, defender, result);
             }
 
-        } else if (combatIsBombard(attacker, defender)) {
-
-        } else {
+        } else if (!combatIsBombard(attacker, defender)) {
             throw new IllegalArgumentException("Bogus combat");
         }
 
@@ -359,56 +357,55 @@ public class SimpleCombatModel extends CombatModel {
             result.addAll(spec.getModifiers(Modifier.AMPHIBIOUS_ATTACK));
         }
 
-        if (combatIsAttackMeasurement(attacker, defender)) {
+        if (!combatIsAttackMeasurement(attacker, defender))
+			if (combatIsSettlementAttack(attacker, defender)) {
+			    // Settlement present, apply bombardment bonus
+			    result.addAll(attacker.getModifiers(Modifier.BOMBARD_BONUS));
 
-        } else if (combatIsSettlementAttack(attacker, defender)) {
-            // Settlement present, apply bombardment bonus
-            result.addAll(attacker.getModifiers(Modifier.BOMBARD_BONUS));
+			    // Popular support bonus
+			    if (combatIsWarOfIndependence(attacker, defender)) {
+			        addPopularSupportBonus((Colony)defender, attacker, result);
+			    }
 
-            // Popular support bonus
-            if (combatIsWarOfIndependence(attacker, defender)) {
-                addPopularSupportBonus((Colony)defender, attacker, result);
-            }
+			} else if (combatIsAttack(attacker, defender)) {
+			    Unit defenderUnit = (Unit) defender;
+			    Tile tile = defenderUnit.getTile();
+			    if (tile != null) {
+			        if (tile.hasSettlement()) {
+			            // Bombard bonus applies to settlement defence
+			            result.addAll(attacker
+			                          .getModifiers(Modifier.BOMBARD_BONUS));
 
-        } else if (combatIsAttack(attacker, defender)) {
-            Unit defenderUnit = (Unit) defender;
-            Tile tile = defenderUnit.getTile();
-            if (tile != null) {
-                if (tile.hasSettlement()) {
-                    // Bombard bonus applies to settlement defence
-                    result.addAll(attacker
-                                  .getModifiers(Modifier.BOMBARD_BONUS));
+			            // Popular support bonus
+			            if (combatIsWarOfIndependence(attacker, defender)) {
+			                addPopularSupportBonus((Colony)tile.getSettlement(),
+			                                       attacker, result);
+			            }
+			        } else {
+			            // Ambush bonus in the open = defender's defence
+			            // bonus, if defender is REF, or attacker is indian.
+			            if (isAmbush(attacker, defender)) {
+			                for (Modifier m : tile.getDefenceModifiers()) {
+			                    Modifier mod = new Modifier(Modifier.OFFENCE, m);
+			                    mod.setSource(Specification.AMBUSH_BONUS_SOURCE);
+			                    result.add(mod);
+			                }
+			            }
+			        }
+			    }
 
-                    // Popular support bonus
-                    if (combatIsWarOfIndependence(attacker, defender)) {
-                        addPopularSupportBonus((Colony)tile.getSettlement(),
-                                               attacker, result);
-                    }
-                } else {
-                    // Ambush bonus in the open = defender's defence
-                    // bonus, if defender is REF, or attacker is indian.
-                    if (isAmbush(attacker, defender)) {
-                        for (Modifier m : tile.getDefenceModifiers()) {
-                            Modifier mod = new Modifier(Modifier.OFFENCE, m);
-                            mod.setSource(Specification.AMBUSH_BONUS_SOURCE);
-                            result.add(mod);
-                        }
-                    }
-                }
-            }
-
-            // Artillery in the open penalty, attacker must be on a
-            // tile and neither unit can be in a settlement.
-            if (attacker.hasAbility(Ability.BOMBARD)
-                && attacker.getLocation() instanceof Tile
-                && attacker.getSettlement() == null
-                && attacker.getState() != Unit.UnitState.FORTIFIED
-                && defenderUnit.getSettlement() == null) {
-                result.addAll(spec.getModifiers(Modifier.ARTILLERY_IN_THE_OPEN));
-            }
-        } else {
-            throw new IllegalStateException("Bogus combat");
-        }
+			    // Artillery in the open penalty, attacker must be on a
+			    // tile and neither unit can be in a settlement.
+			    if (attacker.hasAbility(Ability.BOMBARD)
+			        && attacker.getLocation() instanceof Tile
+			        && attacker.getSettlement() == null
+			        && attacker.getState() != Unit.UnitState.FORTIFIED
+			        && defenderUnit.getSettlement() == null) {
+			        result.addAll(spec.getModifiers(Modifier.ARTILLERY_IN_THE_OPEN));
+			    }
+			} else {
+			    throw new IllegalStateException("Bogus combat");
+			}
     }
 
     /**
