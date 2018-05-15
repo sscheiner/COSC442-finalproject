@@ -98,8 +98,7 @@ public class DebugMenu extends JMenu {
         sc.setMnemonic(KeyEvent.VK_S);
         this.add(sc);
         sc.addActionListener((ActionEvent ae) -> {
-                boolean val = ((JCheckBoxMenuItem)ae.getSource()).isSelected();
-                FreeColDebugger.setDebugDisplayCoordinates(val);
+                FreeColDebugger.setDebugDisplayCoordinates(((JCheckBoxMenuItem) ae.getSource()).isSelected());
                 gui.refresh();
             });
         sc.setEnabled(true);
@@ -135,8 +134,7 @@ public class DebugMenu extends JMenu {
         searchTrace.setOpaque(false);
         this.add(searchTrace);
         searchTrace.addActionListener((ActionEvent ae) -> {
-                boolean val = ((JCheckBoxMenuItem)ae.getSource()).isSelected();
-                game.getMap().setSearchTrace(val);
+                game.getMap().setSearchTrace(((JCheckBoxMenuItem) ae.getSource()).isSelected());
             });
 
         final JMenu cvpMenu
@@ -177,9 +175,7 @@ public class DebugMenu extends JMenu {
         skipTurns.setOpaque(false);
         skipTurns.setMnemonic(KeyEvent.VK_T);
         this.add(skipTurns);
-        skipTurns.addActionListener((ActionEvent ae) -> {
-                DebugUtils.skipTurns(freeColClient);
-            });
+        skipTurns.addActionListener((ActionEvent ae) -> DebugUtils.skipTurns(freeColClient));
         DebugUtils.addSkipChangeListener(freeColClient, this, skipTurns);
         skipTurns.setEnabled(hasServer);
 
@@ -187,54 +183,42 @@ public class DebugMenu extends JMenu {
         addBuilding.setOpaque(false);
         addBuilding.setMnemonic(KeyEvent.VK_B);
         this.add(addBuilding);
-        addBuilding.addActionListener((ActionEvent ae) -> {
-                DebugUtils.addBuildings(freeColClient, addBuilding.getText());
-            });
+        addBuilding.addActionListener((ActionEvent ae) -> DebugUtils.addBuildings(freeColClient, addBuilding.getText()));
         addBuilding.setEnabled(hasServer);
 
         final JMenuItem addFather = Utility.localizedMenuItem("menuBar.debug.addFoundingFather");
         addFather.setOpaque(false);
         addFather.setMnemonic(KeyEvent.VK_F);
         this.add(addFather);
-        addFather.addActionListener((ActionEvent ae) -> {
-                DebugUtils.addFathers(freeColClient, addFather.getText());
-            });
+        addFather.addActionListener((ActionEvent ae) -> DebugUtils.addFathers(freeColClient, addFather.getText()));
         addFather.setEnabled(hasServer);
 
         final JMenuItem runMonarch = Utility.localizedMenuItem("menuBar.debug.runMonarch");
         runMonarch.setOpaque(false);
         runMonarch.setMnemonic(KeyEvent.VK_M);
         this.add(runMonarch);
-        runMonarch.addActionListener((ActionEvent ae) -> {
-                DebugUtils.setMonarchAction(freeColClient, runMonarch.getText());
-            });
+        runMonarch.addActionListener((ActionEvent ae) -> DebugUtils.setMonarchAction(freeColClient, runMonarch.getText()));
         runMonarch.setEnabled(hasServer);
 
         final JMenuItem addGold = Utility.localizedMenuItem("menuBar.debug.addGold");
         addGold.setOpaque(false);
         addGold.setMnemonic(KeyEvent.VK_G);
         this.add(addGold);
-        addGold.addActionListener((ActionEvent ae) -> {
-                DebugUtils.addGold(freeColClient);
-            });
+        addGold.addActionListener((ActionEvent ae) -> DebugUtils.addGold(freeColClient));
         addGold.setEnabled(hasServer);
 
         final JMenuItem addCrosses = Utility.localizedMenuItem("menuBar.debug.addImmigration");
         addCrosses.setOpaque(false);
         addCrosses.setMnemonic(KeyEvent.VK_I);
         this.add(addCrosses);
-        addCrosses.addActionListener((ActionEvent ae) -> {
-                DebugUtils.addImmigration(freeColClient);
-            });
+        addCrosses.addActionListener((ActionEvent ae) -> DebugUtils.addImmigration(freeColClient));
         addCrosses.setEnabled(hasServer);
 
         final JMenuItem giveBells = Utility.localizedMenuItem("menuBar.debug.addLiberty");
         giveBells.setOpaque(false);
         giveBells.setMnemonic(KeyEvent.VK_L);
         this.add(giveBells);
-        giveBells.addActionListener((ActionEvent ae) -> {
-                DebugUtils.addLiberty(freeColClient);
-            });
+        giveBells.addActionListener((ActionEvent ae) -> DebugUtils.addLiberty(freeColClient));
         giveBells.setEnabled(hasServer);
 
         // random number generator
@@ -242,18 +226,14 @@ public class DebugMenu extends JMenu {
         rng.setOpaque(false);
         rng.setMnemonic(KeyEvent.VK_X);
         this.add(rng);
-        rng.addActionListener((ActionEvent ae) -> {
-                DebugUtils.stepRNG(freeColClient);
-            });
+        rng.addActionListener((ActionEvent ae) -> DebugUtils.stepRNG(freeColClient));
         rng.setEnabled(hasServer);
 
         // Unit display
         final JMenuItem du = Utility.localizedMenuItem("menuBar.debug.displayUnits");
         du.setOpaque(false);
         this.add(du);
-        du.addActionListener((ActionEvent ae) -> {
-                DebugUtils.displayUnits(freeColClient);
-            });
+        du.addActionListener((ActionEvent ae) -> DebugUtils.displayUnits(freeColClient));
         du.setEnabled(true);
 
         this.addSeparator();
@@ -262,18 +242,13 @@ public class DebugMenu extends JMenu {
         panelMenu.setOpaque(false);
 
         final JMenuItem monarchDialog = Utility.localizedMenuItem("menuBar.debug.displayMonarchPanel");
-        monarchDialog.addActionListener((ActionEvent ae) -> {
-                gui.showMonarchDialog(
-                    Monarch.MonarchAction.RAISE_TAX_WAR, null, player.getMonarchKey(),
-                    (Boolean b) ->
-                        freeColClient.getInGameController().monarchAction(Monarch.MonarchAction.RAISE_TAX_WAR, b));
-            });
+        monarchDialog.addActionListener((ActionEvent ae) -> gui.showMonarchDialog(Monarch.MonarchAction.RAISE_TAX_WAR, null, player.getMonarchKey(),
+				(Boolean b) -> freeColClient.getInGameController().monarchAction(Monarch.MonarchAction.RAISE_TAX_WAR,
+						b)));
         panelMenu.add(monarchDialog);
 
         final JMenuItem errorMessage = Utility.localizedMenuItem("menuBar.debug.displayErrorMessage");
-        errorMessage.addActionListener((ActionEvent ae) -> {
-                gui.showErrorMessage(ERROR_MESSAGE);
-            });
+        errorMessage.addActionListener((ActionEvent ae) -> gui.showErrorMessage(ERROR_MESSAGE));
         panelMenu.add(errorMessage);
 
         this.add(panelMenu);
@@ -282,17 +257,13 @@ public class DebugMenu extends JMenu {
         europeStatus.setOpaque(false);
         europeStatus.setMnemonic(KeyEvent.VK_E);
         this.add(europeStatus);
-        europeStatus.addActionListener((ActionEvent ae) -> {
-                DebugUtils.displayEurope(freeColClient);
-            });
+        europeStatus.addActionListener((ActionEvent ae) -> DebugUtils.displayEurope(freeColClient));
         europeStatus.setEnabled(hasServer);
 
-        final JCheckBoxMenuItem dam
-            = Utility.localizedCheckBoxMenuItem("menuBar.debug.displayAIMissions",
-                FreeColDebugger.debugShowMission());
-        final JCheckBoxMenuItem dami
-            = Utility.localizedCheckBoxMenuItem("menuBar.debug.displayAdditionalAIMissionInfo",
-                FreeColDebugger.debugShowMissionInfo());
+        final JCheckBoxMenuItem dam = Utility.localizedCheckBoxMenuItem("menuBar.debug.displayAIMissions",
+				FreeColDebugger.debugShowMission()),
+				dami = Utility.localizedCheckBoxMenuItem("menuBar.debug.displayAdditionalAIMissionInfo",
+						FreeColDebugger.debugShowMissionInfo());
         dam.setOpaque(false);
         dam.setMnemonic(KeyEvent.VK_A);
         this.add(dam);
@@ -308,12 +279,9 @@ public class DebugMenu extends JMenu {
         useAI.setOpaque(false);
         useAI.setMnemonic(KeyEvent.VK_A);
         useAI.setAccelerator(KeyStroke.getKeyStroke('A',
-            Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()
-                | InputEvent.ALT_MASK));
+            InputEvent.ALT_MASK | Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
         this.add(useAI);
-        useAI.addActionListener((ActionEvent ae) -> {
-                DebugUtils.useAI(freeColClient);
-            });
+        useAI.addActionListener((ActionEvent ae) -> DebugUtils.useAI(freeColClient));
         useAI.setEnabled(hasServer);
 
         dami.setOpaque(false);
@@ -333,12 +301,9 @@ public class DebugMenu extends JMenu {
         compareMaps.setOpaque(false);
         //compareMaps.setMnemonic(KeyEvent.VK_C);
         compareMaps.setAccelerator(KeyStroke.getKeyStroke('C',
-            Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()
-                | InputEvent.ALT_MASK));
+            InputEvent.ALT_MASK | Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
         this.add(compareMaps);
-        compareMaps.addActionListener((ActionEvent ae) -> {
-                DebugUtils.checkDesyncAction(freeColClient);
-            });
+        compareMaps.addActionListener((ActionEvent ae) -> DebugUtils.checkDesyncAction(freeColClient));
         compareMaps.setEnabled(hasServer);
 
         final JMenuItem showResourceKeys = Utility.localizedMenuItem("menuBar.debug.showResourceKeys");
@@ -366,9 +331,7 @@ public class DebugMenu extends JMenu {
         statistics.setOpaque(false);
         //statistics.setMnemonic(KeyEvent.VK_I);
         this.add(statistics);
-        statistics.addActionListener((ActionEvent ae) -> {
-                gui.showStatisticsPanel();
-            });
+        statistics.addActionListener((ActionEvent ae) -> gui.showStatisticsPanel());
         statistics.setEnabled(true);
 
         // garbage collector
@@ -376,9 +339,7 @@ public class DebugMenu extends JMenu {
         gc.setOpaque(false);
         //gc.setMnemonic(KeyEvent.VK_G);
         this.add(gc);
-        gc.addActionListener((ActionEvent ae) -> {
-                System.gc();
-            });
+        gc.addActionListener((ActionEvent ae) -> System.gc());
         gc.setEnabled(true);
 
         this.addSeparator();

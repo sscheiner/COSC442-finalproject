@@ -63,23 +63,6 @@ public abstract class FreeColMenuBar extends JMenuBar {
      * @param f The main controller.
      */
     protected FreeColMenuBar(FreeColClient f) {
-        // FIXME: FreeColClient should not have to be passed in to
-        // this class.  This is only a menu bar, it doesn't need a
-        // reference to the main controller. The only reason it has
-        // one now is because DebugMenu needs it. And DebugMenu needs
-        // it because it is using inner classes for ActionListeners
-        // and those inner classes use the reference.  If those inner
-        // classes were in seperate classes, when they were created,
-        // they could use the FreeColClient reference of the
-        // ActionManger. So DebugMenu needs to be refactored to remove
-        // inner classes so that this MenuBar can lose its unnecessary
-        // reference to the main controller.  See FreeColMenuTest.
-        //
-        // Okay, I lied.. the update() and paintComponent() methods in
-        // this MenuBar use freeColClient, too. But so what.  Move
-        // those to another class too. :)
-        super();
-
         setOpaque(false);
 
         this.freeColClient = f;
@@ -111,18 +94,16 @@ public abstract class FreeColMenuBar extends JMenuBar {
         JMenuItem rtn = null;
         FreeColAction action = am.getFreeColAction(actionId);
 
-        if (action != null) {
-            rtn = new JMenuItem();
-            rtn.setAction(action);
-            rtn.setOpaque(false);
-
-            if (action.getMnemonic() != null) {
-                rtn.addMenuKeyListener(action.getMenuKeyListener());
-            }
-        } else {
-            logger.finest("Could not create menu item. [" + actionId
-                + "] not found.");
-        }
+        if (action == null)
+			logger.finest("Could not create menu item. [" + actionId + "] not found.");
+		else {
+			rtn = new JMenuItem();
+			rtn.setAction(action);
+			rtn.setOpaque(false);
+			if (action.getMnemonic() != null) {
+				rtn.addMenuKeyListener(action.getMenuKeyListener());
+			}
+		}
         return rtn;
     }
 
@@ -131,15 +112,15 @@ public abstract class FreeColMenuBar extends JMenuBar {
      *
      * @param actionId The identifier given to the
      *      {@link ActionManager#getFreeColAction(String) action manager}.
-     * @param actionListener An <code>ActionListener</code> that will be
+     * @param l An <code>ActionListener</code> that will be
      *      added to the menu item.
      * @return The menu item with the <code>ActionListener</code> added.
      */
     protected JMenuItem getMenuItem(String actionId,
-                                    ActionListener actionListener) {
+                                    ActionListener l) {
         JMenuItem rtn = getMenuItem(actionId);
 
-        rtn.addActionListener(actionListener);
+        rtn.addActionListener(l);
 
         return rtn;
     }
@@ -156,15 +137,14 @@ public abstract class FreeColMenuBar extends JMenuBar {
         JCheckBoxMenuItem rtn = null;
         FreeColAction action = am.getFreeColAction(actionId);
 
-        if (action != null) {
-            rtn = new JCheckBoxMenuItem();
-            rtn.setAction(action);
-            rtn.setOpaque(false);
-
-            rtn.setSelected(((SelectableAction)am.getFreeColAction(actionId)).isSelected());
-        } else
-            logger.finest("Could not create menu item. [" + actionId
-                + "] not found.");
+        if (action == null)
+			logger.finest("Could not create menu item. [" + actionId + "] not found.");
+		else {
+			rtn = new JCheckBoxMenuItem();
+			rtn.setAction(action);
+			rtn.setOpaque(false);
+			rtn.setSelected(((SelectableAction) am.getFreeColAction(actionId)).isSelected());
+		}
 
         return rtn;
     }
@@ -174,11 +154,11 @@ public abstract class FreeColMenuBar extends JMenuBar {
      *
      * @param actionId The identifier given to the
      *      {@link ActionManager#getFreeColAction(String) action manager}.
-     * @param group The <code>ButtonGroup</code> to add this item to
+     * @param g The <code>ButtonGroup</code> to add this item to
      * @return The menu item.
      */
     protected JRadioButtonMenuItem getRadioButtonMenuItem(String actionId,
-                                                          ButtonGroup group) {
+                                                          ButtonGroup g) {
         JRadioButtonMenuItem rtn = null;
         FreeColAction action = am.getFreeColAction(actionId);
 
@@ -188,7 +168,7 @@ public abstract class FreeColMenuBar extends JMenuBar {
             rtn.setOpaque(false);
 
             rtn.setSelected(((SelectableAction) am.getFreeColAction(actionId)).isSelected());
-            group.add(rtn);
+            g.add(rtn);
         } else {
             logger.finest("Could not create menu item. [" + actionId
                 + "] not found.");
@@ -222,9 +202,8 @@ public abstract class FreeColMenuBar extends JMenuBar {
         menu.setOpaque(false);
         menu.setMnemonic(KeyEvent.VK_C);
 
-        for (PanelType type : PanelType.values()) {
-            menu.add(getMenuItem(ColopediaAction.id + type.getKey()));
-        }
+        for (PanelType type : PanelType.values())
+			menu.add(getMenuItem(ColopediaAction.id + type.getKey()));
         menu.addSeparator();
         menu.add(getMenuItem(AboutAction.id));
 
@@ -236,10 +215,9 @@ public abstract class FreeColMenuBar extends JMenuBar {
      */
     @Override
     public void paintComponent(Graphics g) {
-        if (isOpaque()) {
-            super.paintComponent(g);
-        } else {
-            ImageLibrary.drawTiledImage("image.background.FreeColMenuBar", g, this, getInsets());
-        }
+        if (isOpaque())
+			super.paintComponent(g);
+		else
+			ImageLibrary.drawTiledImage("image.background.FreeColMenuBar", g, this, getInsets());
     }
 }
