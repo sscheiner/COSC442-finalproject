@@ -122,7 +122,8 @@ public final class CanvasMouseListener implements ActionListener, MouseListener 
     @Override
     public void mousePressed(MouseEvent e) {
     	
-        //test write to file
+        //test write to file Sam Scheiner
+    	/*
     	try {
     		BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\cshome\\sschei7\\documents\\mouseEventTest.txt", true));
      		writer.append("mouse clicked\n");
@@ -132,7 +133,7 @@ public final class CanvasMouseListener implements ActionListener, MouseListener 
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-    	
+    	*/
     	
         if (!e.getComponent().isEnabled()) return;
   

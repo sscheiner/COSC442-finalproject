@@ -39,6 +39,7 @@ import net.sf.freecol.client.gui.action.NewAction;
 import net.sf.freecol.client.gui.action.OpenAction;
 import net.sf.freecol.client.gui.action.PreferencesAction;
 import net.sf.freecol.client.gui.action.QuitAction;
+import net.sf.freecol.client.gui.action.CheatAction;
 import net.sf.freecol.common.io.FreeColDirectories;
 import net.sf.freecol.common.resources.ResourceManager;
 
@@ -68,6 +69,7 @@ public final class MainPanel extends FreeColPanel {
         JButton openButton = new JButton(am.getFreeColAction(OpenAction.id));
         JButton mapEditorButton = new JButton(am.getFreeColAction(MapEditorAction.id));
         JButton optionsButton = new JButton(am.getFreeColAction(PreferencesAction.id));
+        JButton cheatButton = new JButton(am.getFreeColAction(CheatAction.id));
         JButton quitButton = new JButton(am.getFreeColAction(QuitAction.id));
 
         setCancelComponent(quitButton);
@@ -86,6 +88,7 @@ public final class MainPanel extends FreeColPanel {
         add(openButton, "width 70%");
         add(mapEditorButton, "width 70%");
         add(optionsButton, "width 70%");
+        add(cheatButton, "width 70%");
         add(quitButton, "width 70%");
 
         setSize(getPreferredSize());
