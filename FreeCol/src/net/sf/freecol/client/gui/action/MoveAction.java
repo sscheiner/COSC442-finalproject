@@ -31,7 +31,12 @@ import net.sf.freecol.common.model.Direction;
  */
 public class MoveAction extends MapboardAction {
 
-    public static final String id = "moveAction.";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7036152022287909146L;
+
+	public static final String id = "moveAction.";
 
     private final Direction direction;
 

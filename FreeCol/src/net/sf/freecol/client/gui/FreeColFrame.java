@@ -47,7 +47,12 @@ import net.sf.freecol.common.resources.ResourceManager;
  */
 public class FreeColFrame extends JFrame {
 
-    private static final Logger logger = Logger.getLogger(FreeColFrame.class.getName());
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2673035060866551609L;
+
+	private static final Logger logger = Logger.getLogger(FreeColFrame.class.getName());
 
     /** The FreeCol client controlling the frame. */
     protected final FreeColClient freeColClient;

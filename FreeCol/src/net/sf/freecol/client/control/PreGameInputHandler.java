@@ -273,7 +273,7 @@ public final class PreGameInputHandler extends InputHandler {
      *     tree) that holds all the information.
      * @return Null.
      */
-    private Element startGame(@SuppressWarnings("unused") Element element) {
+    private Element startGame(Element element) {
         new Thread(FreeCol.CLIENT_THREAD + "Starting game") {
                 @Override
                 public void run() {

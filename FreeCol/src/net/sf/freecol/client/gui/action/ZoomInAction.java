@@ -29,7 +29,11 @@ import net.sf.freecol.client.FreeColClient;
  */
 public class ZoomInAction extends FreeColAction {
 
-    public static final String id = "zoomInAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -8873959508679946644L;
+	public static final String id = "zoomInAction";
 
 
     /**

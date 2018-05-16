@@ -78,7 +78,7 @@ public final class UnitImageAnimation {
                         final ImageIcon icon = (ImageIcon)unitLabel.getIcon();
                         Image image = ievent.getImage();
                         if(mirror) {
-                            // FIXME: Add mirroring functionality to SimpleZippedAnimation
+
                             image = ImageLibrary.createMirroredImage(image);
                         }
                         icon.setImage(image);

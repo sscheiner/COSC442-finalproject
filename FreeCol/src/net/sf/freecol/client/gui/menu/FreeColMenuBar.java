@@ -49,7 +49,12 @@ import net.sf.freecol.client.gui.panel.Utility;
  */
 public abstract class FreeColMenuBar extends JMenuBar {
 
-    private static final Logger logger = Logger.getLogger(FreeColMenuBar.class.getName());
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1842485218905631490L;
+
+	private static final Logger logger = Logger.getLogger(FreeColMenuBar.class.getName());
 
     protected final FreeColClient freeColClient;
 

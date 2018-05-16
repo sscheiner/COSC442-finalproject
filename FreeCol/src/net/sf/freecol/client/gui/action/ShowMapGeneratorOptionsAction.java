@@ -29,7 +29,11 @@ import net.sf.freecol.client.FreeColClient;
  */
 public class ShowMapGeneratorOptionsAction extends FreeColAction {
 
-    public static final String id = "mapGeneratorOptionsAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4097988759145114074L;
+	public static final String id = "mapGeneratorOptionsAction";
 
 
     /**

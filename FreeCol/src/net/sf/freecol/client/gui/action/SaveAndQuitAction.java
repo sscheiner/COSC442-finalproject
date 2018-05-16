@@ -29,7 +29,11 @@ import net.sf.freecol.client.FreeColClient;
  */
 public class SaveAndQuitAction extends FreeColAction {
 
-    public static final String id = "saveAndQuitAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8865608543764366367L;
+	public static final String id = "saveAndQuitAction";
 
 
     /**

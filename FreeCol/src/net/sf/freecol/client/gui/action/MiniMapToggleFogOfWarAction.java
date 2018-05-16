@@ -30,7 +30,11 @@ import net.sf.freecol.client.FreeColClient;
  */
 public class MiniMapToggleFogOfWarAction extends MapboardAction {
 
-    public static final String id = "miniMapToggleFogOfWarAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1330657133098018143L;
+	public static final String id = "miniMapToggleFogOfWarAction";
 
 
     /**

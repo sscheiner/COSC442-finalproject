@@ -29,7 +29,11 @@ import net.sf.freecol.client.FreeColClient;
  */
 public class FindSettlementAction extends MapboardAction {
 
-    public static final String id = "findSettlementAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 458742119093025894L;
+	public static final String id = "findSettlementAction";
 
 
     /**

@@ -36,7 +36,12 @@ import static net.sf.freecol.common.util.StringUtils.*;
  */
 public class DisplayTileTextAction extends SelectableAction {
 
-    public static final String id = "displayTileTextAction.";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4901940111768044905L;
+
+	public static final String id = "displayTileTextAction.";
 
     // FIXME: make ClientOptions use enum
     public static enum DisplayText {

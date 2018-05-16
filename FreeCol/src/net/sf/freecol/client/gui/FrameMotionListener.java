@@ -56,9 +56,7 @@ public class FrameMotionListener extends MouseAdapter implements MouseMotionList
         loc = p;
     }
 
-    //@Override
-    //public void mouseMoved(MouseEvent arg0) {
-    //}
+   
 
     @Override
     public void mousePressed(MouseEvent e) {

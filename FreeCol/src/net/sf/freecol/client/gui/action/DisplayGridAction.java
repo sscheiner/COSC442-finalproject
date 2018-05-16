@@ -32,7 +32,11 @@ import net.sf.freecol.client.FreeColClient;
  */
 public class DisplayGridAction extends SelectableAction {
 
-    public static final String id = "displayGridAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5690902037153370859L;
+	public static final String id = "displayGridAction";
 
 
     /**

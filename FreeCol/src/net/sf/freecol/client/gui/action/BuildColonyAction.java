@@ -30,7 +30,11 @@ import net.sf.freecol.common.model.Unit;
  */
 public class BuildColonyAction extends UnitAction {
 
-    public static final String id = "buildColonyAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5605642743133830175L;
+	public static final String id = "buildColonyAction";
 
 
     /**

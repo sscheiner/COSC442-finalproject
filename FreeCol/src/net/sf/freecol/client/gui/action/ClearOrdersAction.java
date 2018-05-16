@@ -29,7 +29,11 @@ import net.sf.freecol.client.FreeColClient;
  */
 public class ClearOrdersAction extends UnitAction {
 
-    public static final String id = "clearOrdersAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -8855533521308927499L;
+	public static final String id = "clearOrdersAction";
 
 
     /**

@@ -50,7 +50,11 @@ import net.sf.freecol.common.resources.ResourceManager;
 public abstract class FreeColAction extends AbstractAction
     implements Option<FreeColAction> {
 
-    /** Protected to congregate the subclasses here. */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -8515080453270980432L;
+	/** Protected to congregate the subclasses here. */
     protected static final Logger logger = Logger.getLogger(FreeColAction.class.getName());
 
     /**

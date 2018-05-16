@@ -30,7 +30,11 @@ import net.sf.freecol.common.model.Unit;
  */
 public class SkipUnitAction extends UnitAction {
 
-    public static final String id = "skipUnitAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 93815653942102221L;
+	public static final String id = "skipUnitAction";
 
 
     /**

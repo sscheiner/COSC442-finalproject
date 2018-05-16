@@ -30,7 +30,11 @@ import net.sf.freecol.client.FreeColClient;
  */
 public class EuropeAction extends MapboardAction {
 
-    public static final String id = "europeAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1671221849383137614L;
+	public static final String id = "europeAction";
 
 
     /**

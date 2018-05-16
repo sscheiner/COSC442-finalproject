@@ -29,7 +29,11 @@ import net.sf.freecol.client.FreeColClient;
  */
 public class ReportReligionAction extends FreeColAction {
 
-    public static final String id = "reportReligionAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2538557853330894950L;
+	public static final String id = "reportReligionAction";
 
 
     /**

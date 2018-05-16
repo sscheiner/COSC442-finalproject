@@ -29,7 +29,11 @@ import net.sf.freecol.client.FreeColClient;
  */
 public class GotoTileAction extends UnitAction {
 
-    public static final String id = "gotoTileAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -8727419939336443741L;
+	public static final String id = "gotoTileAction";
 
 
     /**

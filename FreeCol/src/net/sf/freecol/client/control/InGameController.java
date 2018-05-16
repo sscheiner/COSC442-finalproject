@@ -1498,7 +1498,7 @@ public final class InGameController implements NetworkConstants {
      */
     private boolean moveHighSeas(Unit unit, Direction direction) {
         // Confirm moving to Europe if told to move to a null tile
-        // (FIXME: can this still happen?), or if crossing the boundary
+
         // between coastal and high sea.  Otherwise just move.
         Tile oldTile = unit.getTile();
         Tile newTile = oldTile.getNeighbourOrNull(direction);
@@ -2703,8 +2703,6 @@ public final class InGameController implements NetworkConstants {
     public boolean buildColony(Unit unit) {
         if (!requireOurTurn() || unit == null) return false;
 
-        // Check unit, which must be on the map and able to build.
-        if (unit == null) return false;
         final Tile tile = unit.getTile();
         if (tile == null) return false;
         if (!unit.canBuildColony()) {

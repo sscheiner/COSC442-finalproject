@@ -32,7 +32,11 @@ import net.sf.freecol.common.model.Unit;
  */
 public class GotoAction extends UnitAction {
 
-    public static final String id = "gotoAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5959480749615962544L;
+	public static final String id = "gotoAction";
 
 
     /**

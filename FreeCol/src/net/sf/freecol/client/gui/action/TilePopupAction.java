@@ -29,7 +29,11 @@ import net.sf.freecol.client.FreeColClient;
  */
 public class TilePopupAction extends MapboardAction {
 
-    public static final String id = "tilePopupAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public static final String id = "tilePopupAction";
 
 
     /**

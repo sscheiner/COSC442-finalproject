@@ -64,7 +64,7 @@ public class InGameMenuBar extends FreeColMenuBar {
      * @param listener An optional mouse motion listener.
      */
     public InGameMenuBar(FreeColClient freeColClient, MouseMotionListener listener) {
-        // FIXME: FreeColClient should not have to be passed in to
+
         // this class.  This is only a menu bar, it doesn't need a
         // reference to the main controller.  The only reason it has
         // one now is because DebugMenu needs it.  And DebugMenu needs

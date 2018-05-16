@@ -30,7 +30,11 @@ import net.sf.freecol.common.model.Unit;
  */
 public class AssignTradeRouteAction extends UnitAction {
 
-    public static final String id = "assignTradeRouteAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3529882678430619858L;
+	public static final String id = "assignTradeRouteAction";
 
 
     /**

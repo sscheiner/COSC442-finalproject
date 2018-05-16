@@ -38,7 +38,11 @@ import net.sf.freecol.common.model.Unit;
  */
 public class ChangeAction extends UnitAction {
 
-    public static final String id = "changeAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1472475211239830636L;
+	public static final String id = "changeAction";
 
 
     /**

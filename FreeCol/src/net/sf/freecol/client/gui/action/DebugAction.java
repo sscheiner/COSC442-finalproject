@@ -33,7 +33,11 @@ import net.sf.freecol.common.debug.FreeColDebugger;
  */
 public class DebugAction extends FreeColAction {
 
-    public static final String id = "debugAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7626750969530148237L;
+	public static final String id = "debugAction";
 
 
     /**

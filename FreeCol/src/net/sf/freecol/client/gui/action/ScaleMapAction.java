@@ -33,7 +33,11 @@ import net.sf.freecol.common.model.Tile;
  */
 public class ScaleMapAction extends FreeColAction {
 
-    public static final String id = "scaleMapAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -11480897316366618L;
+	public static final String id = "scaleMapAction";
 
 
     /**

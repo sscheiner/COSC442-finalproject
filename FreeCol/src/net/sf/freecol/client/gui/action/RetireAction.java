@@ -30,7 +30,11 @@ import net.sf.freecol.common.model.Player;
  */
 public class RetireAction extends FreeColAction {
 
-    public static final String id = "retireAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8656831929472179207L;
+	public static final String id = "retireAction";
 
 
     /**

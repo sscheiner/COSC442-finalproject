@@ -317,7 +317,7 @@ public class SwingGUI extends GUI {
                 canvas.removeKeyListener(this);
                 canvas.removeMouseListener(this);
                 vp.removeMouseListener(this);
-                //vp.removeVideoListener(this);
+              
                 vp.stop();
                 canvas.remove(vp);
                 if (t != null) {
@@ -909,7 +909,7 @@ public class SwingGUI extends GUI {
     /**
      * Show the appropriate panel for an object.
      *
-     * TODO: Improve OO.
+
      *
      * @param fco The <code>FreeColObject</code> to display.
      */

@@ -42,7 +42,7 @@ import net.sf.freecol.common.model.Colony;
 import net.sf.freecol.common.model.Europe;
 import net.sf.freecol.common.model.FreeColGameObject;
 import net.sf.freecol.common.model.Game;
-import net.sf.freecol.common.model.Location;
+
 import net.sf.freecol.common.model.ModelMessage;
 import net.sf.freecol.common.model.Player;
 import net.sf.freecol.common.model.Unit;
@@ -55,7 +55,7 @@ import net.sf.freecol.common.option.TextOption;
 import net.sf.freecol.common.util.Utils;
 
 import javax.xml.stream.events.XMLEvent;
-
+import net.sf.freecol.common.model.Location;
 
 /**
  * Defines how available client options are displayed on the Setting
@@ -701,7 +701,12 @@ public class ClientOptions extends OptionGroup {
      * @return a <code>Comparator</code> value
      */
     public static Comparator<Colony> getColonyComparator(int type) {
+    	try{
         return getTypeObject(type).getColonyComparator();
+    	}
+    	catch(Exception e){
+    		return null;
+    	}
     }
 
     /**
@@ -866,7 +871,8 @@ public class ClientOptions extends OptionGroup {
 		case COLONY_COMPARATOR_SOL:
 			return new ColonyComparatorSol();
 		case COLONY_COMPARATOR_NAME:
-			return new ColonyComparatorName();
+			return new ColonyComparatorName(); 
+		
 		}
 		return null;
 	}

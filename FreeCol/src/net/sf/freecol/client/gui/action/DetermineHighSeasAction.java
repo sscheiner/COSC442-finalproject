@@ -31,7 +31,11 @@ import net.sf.freecol.common.model.Map;
  */
 public class DetermineHighSeasAction extends FreeColAction {
 
-    public static final String id = "determineHighSeasAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3409073340188852429L;
+	public static final String id = "determineHighSeasAction";
 
 
     /**

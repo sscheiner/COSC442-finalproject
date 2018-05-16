@@ -119,14 +119,14 @@ public class VideoComponent extends JPanel {
     //}
 
     @Override
-    public void addMouseListener(MouseListener l) {
+    public void addMouseListener(MouseListener l) { // $codepro.audit.disable overridingSynchronizedMethod
         super.addMouseListener(l);
 
         applet.addMouseListener(l);
     }
 
     @Override
-    public void removeMouseListener(MouseListener l) {
+    public void removeMouseListener(MouseListener l) { // $codepro.audit.disable overridingSynchronizedMethod
         super.removeMouseListener(l);
 
         applet.removeMouseListener(l);

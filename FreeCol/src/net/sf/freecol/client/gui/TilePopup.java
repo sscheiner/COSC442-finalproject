@@ -23,7 +23,7 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-import java.util.Collections;
+
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -36,7 +36,7 @@ import javax.swing.JSeparator;
 import net.sf.freecol.client.FreeColClient;
 import net.sf.freecol.client.control.InGameController;
 import net.sf.freecol.client.gui.action.UnloadAction;
-import net.sf.freecol.client.gui.panel.ReportPanel;
+
 import net.sf.freecol.client.gui.panel.Utility;
 import net.sf.freecol.common.debug.DebugUtils;
 import net.sf.freecol.common.debug.FreeColDebugger;
@@ -62,7 +62,12 @@ import net.sf.freecol.common.util.LogBuilder;
  */
 public final class TilePopup extends JPopupMenu {
 
-    @SuppressWarnings("unused")
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6200189999064947081L;
+
+	@SuppressWarnings("unused")
     private static final Logger logger = Logger.getLogger(TilePopup.class.getName());
 
     public static final int UNIT_LINES_IN_FIRST_MENU = 9;

@@ -30,7 +30,11 @@ import net.sf.freecol.common.model.Unit;
  */
 public class FortifyAction extends UnitAction {
 
-    public static final String id = "fortifyAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5560080506720017919L;
+	public static final String id = "fortifyAction";
 
 
     /**

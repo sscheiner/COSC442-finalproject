@@ -30,7 +30,11 @@ import net.sf.freecol.client.FreeColClient;
  */
 public class MiniMapToggleViewAction extends MapboardAction {
     
-    public static final String id = "miniMapToggleBordersAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5171613193508450977L;
+	public static final String id = "miniMapToggleBordersAction";
     
     
     /**

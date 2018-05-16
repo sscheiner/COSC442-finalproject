@@ -584,7 +584,7 @@ public final class InGameInputHandler extends InputHandler {
      *     tree) that holds all the information.
      * @return Null.
      */
-    private Element disposeUnits(Element element) {
+   /* private Element disposeUnits(Element element) {
         Game game = getGame();
         NodeList nodes = element.getChildNodes();
 
@@ -603,7 +603,7 @@ public final class InGameInputHandler extends InputHandler {
             }
         }
         return null;
-    }
+    }*/
 
     /**
      * Handle an "error"-message.

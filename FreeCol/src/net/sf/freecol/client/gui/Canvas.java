@@ -1350,7 +1350,7 @@ public final class Canvas extends JDesktopPane {
      * Closes all panels, changes the background and shows the main menu.
      */
     void returnToTitle() {
-        // FIXME: check if the GUI object knows that we're not
+
         // inGame. (Retrieve value of GUI::inGame.)  If GUI thinks
         // we're still in the game then log an error because at this
         // point the GUI should have been informed.
@@ -1577,7 +1577,7 @@ public final class Canvas extends JDesktopPane {
                                       Tile tile) {
         PopupPosition pp = setOffsetFocus(tile);
 
-        // TODO: Remove compatibility code when all non-modal dialogs
+
         //       have been converted into panels.
         if(!freeColDialog.isModal()) {
             int canvasWidth = getWidth();

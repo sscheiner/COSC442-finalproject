@@ -67,11 +67,8 @@ public class ActionManager extends OptionGroup {
      */
     public void initializeActions(InGameController inGameController,
                                   ConnectController connectController) {
-        /**
-         * Possible FIXME: should we put some of these, especially the
-         * move and tile improvement actions, into OptionGroups of
-         * their own? This would simplify the MapControls slightly.
-         */
+   
+       
 
         // keep this list alphabetized.
         add(new AboutAction(freeColClient));

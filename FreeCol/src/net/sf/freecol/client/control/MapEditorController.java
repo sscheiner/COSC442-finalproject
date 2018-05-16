@@ -94,8 +94,8 @@ public final class MapEditorController {
     /**
      * Enters map editor modus.
      *
-     * FIXME: The TC and difficulty level can now be set at the
-     * command line, but we should do better.
+
+     * 
      */
     public void startMapEditor() {
         try {

@@ -44,7 +44,11 @@ import net.sf.freecol.common.model.Player;
  */
 public class GrayLayer extends Component {
 
-    /** Color for graying out background component */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5308609977231978333L;
+	/** Color for graying out background component */
     private static final Color MASK_COLOR = new Color(0f, 0f, 0f, .6f);
     /** Default font size for message text */
     private static final int DEFAULT_FONT_SIZE = 18;

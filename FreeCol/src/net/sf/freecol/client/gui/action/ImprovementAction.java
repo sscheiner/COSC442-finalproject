@@ -35,7 +35,11 @@ import net.sf.freecol.common.model.Unit;
  */
 public class ImprovementAction extends UnitAction {
 
-    private final TileImprovementType improvement;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4449208309309279685L;
+	private final TileImprovementType improvement;
 
 
     /**

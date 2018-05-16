@@ -30,7 +30,11 @@ import net.sf.freecol.common.model.Unit;
  */
 public class SentryAction extends UnitAction {
 
-    public static final String id = "sentryAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7034683518226113000L;
+	public static final String id = "sentryAction";
 
 
     /**

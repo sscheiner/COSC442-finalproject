@@ -32,7 +32,11 @@ import net.sf.freecol.common.io.FreeColDirectories;
  */
 public class ContinueAction extends FreeColAction {
 
-    public static final String id = "continueAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1729215407736729803L;
+	public static final String id = "continueAction";
 
 
     /**

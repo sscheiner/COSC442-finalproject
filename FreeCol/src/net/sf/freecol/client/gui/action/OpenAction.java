@@ -29,7 +29,11 @@ import net.sf.freecol.client.FreeColClient;
  */
 public class OpenAction extends FreeColAction {
 
-    public static final String id = "openAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1778889017136353470L;
+	public static final String id = "openAction";
 
 
     /**

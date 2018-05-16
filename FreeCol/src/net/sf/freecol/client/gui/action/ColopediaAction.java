@@ -31,7 +31,11 @@ import static net.sf.freecol.common.util.StringUtils.*;
  */
 public class ColopediaAction extends FreeColAction {
 
-    public static final String id = "colopediaAction.";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3431381979540028992L;
+	public static final String id = "colopediaAction.";
 
     // Order of elements will influence ingame order of menu items.
     public static enum PanelType {

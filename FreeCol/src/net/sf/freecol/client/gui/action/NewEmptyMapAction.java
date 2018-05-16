@@ -33,7 +33,11 @@ import net.sf.freecol.common.model.Tile;
  */
 public class NewEmptyMapAction extends MapboardAction {
 
-    public static final String id = "newEmptyMapAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4843115234333431890L;
+	public static final String id = "newEmptyMapAction";
 
 
     /**

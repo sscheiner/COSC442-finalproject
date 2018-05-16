@@ -29,7 +29,11 @@ import net.sf.freecol.client.FreeColClient;
  */
 public class MapEditorAction extends FreeColAction {
 
-    public static final String id = "mapEditorAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4843491735502679085L;
+	public static final String id = "mapEditorAction";
 
 
     /**

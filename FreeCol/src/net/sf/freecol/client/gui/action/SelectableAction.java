@@ -31,7 +31,12 @@ import net.sf.freecol.common.model.Player;
  */
 public abstract class SelectableAction extends MapboardAction {
 
-    public static final String id = "selectableAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5531358689304873641L;
+
+	public static final String id = "selectableAction";
 
     private final String optionId;
 

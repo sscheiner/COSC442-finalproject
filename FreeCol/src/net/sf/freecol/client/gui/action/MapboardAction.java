@@ -30,6 +30,12 @@ public abstract class MapboardAction extends FreeColAction {
 
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1489990512950334892L;
+
+
+	/**
      * Creates a new <code>MapboardAction</code>.
      *
      * @param freeColClient The <code>FreeColClient</code> for the game.

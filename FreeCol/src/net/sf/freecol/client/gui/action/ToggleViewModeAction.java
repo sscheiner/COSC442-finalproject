@@ -30,7 +30,11 @@ import net.sf.freecol.client.FreeColClient;
  */
 public class ToggleViewModeAction extends MapboardAction {
 
-    public static final String id = "toggleViewModeAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public static final String id = "toggleViewModeAction";
 
 
     /**

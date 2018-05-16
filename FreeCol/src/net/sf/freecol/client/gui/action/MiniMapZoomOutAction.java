@@ -29,7 +29,11 @@ import net.sf.freecol.client.FreeColClient;
  */
 public class MiniMapZoomOutAction extends MapboardAction {
 
-    public static final String id = "miniMapZoomOutAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5451096802230068603L;
+	public static final String id = "miniMapZoomOutAction";
 
 
     /**

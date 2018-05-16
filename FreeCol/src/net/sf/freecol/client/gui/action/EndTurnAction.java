@@ -31,7 +31,11 @@ import net.sf.freecol.client.FreeColClient;
  */
 public class EndTurnAction extends MapboardAction {
 
-    public static final String id = "endTurnAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5778453569197108926L;
+	public static final String id = "endTurnAction";
 
 
     /**

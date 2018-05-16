@@ -31,7 +31,11 @@ import net.sf.freecol.common.model.Player.PlayerType;
  */
 public class DeclareIndependenceAction extends MapboardAction {
 
-    public static final String id = "declareIndependenceAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3514165118567852589L;
+	public static final String id = "declareIndependenceAction";
 
 
     /**

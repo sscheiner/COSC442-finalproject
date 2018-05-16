@@ -29,7 +29,11 @@ import net.sf.freecol.client.FreeColClient;
  */
 public class ExecuteGotoOrdersAction extends MapboardAction {
 
-    public static final String id = "executeGotoOrdersAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6756235525637900711L;
+	public static final String id = "executeGotoOrdersAction";
 
 
     /**

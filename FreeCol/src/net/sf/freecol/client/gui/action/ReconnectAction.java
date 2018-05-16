@@ -29,7 +29,11 @@ import net.sf.freecol.client.FreeColClient;
  */
 public class ReconnectAction extends FreeColAction {
 
-    public static final String id = "reconnectAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1108750027062862639L;
+	public static final String id = "reconnectAction";
 
 
     /**

@@ -21,7 +21,7 @@ package net.sf.freecol.client.control;
 
 import java.awt.Color;
 
-import java.util.logging.Logger;
+
 
 import net.sf.freecol.client.FreeColClient;
 import net.sf.freecol.client.gui.GUI;
@@ -42,7 +42,7 @@ import net.sf.freecol.common.option.OptionGroup;
  */
 public final class PreGameController {
 
-    private static final Logger logger = Logger.getLogger(PreGameController.class.getName());
+	
 
     /** The main client. */
     private final FreeColClient freeColClient;

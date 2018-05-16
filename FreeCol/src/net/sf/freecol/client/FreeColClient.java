@@ -152,12 +152,12 @@ public final class FreeColClient {
         mapEditor = false;
         this.headless = headless
             || System.getProperty("java.awt.headless", "false").equals("true");
-        if (this.headless) {
-            if (!FreeColDebugger.isInDebugMode()
-                || FreeColDebugger.getDebugRunTurns() <= 0) {
+        
+            if (this.headless&&(!FreeColDebugger.isInDebugMode()
+                || FreeColDebugger.getDebugRunTurns() <= 0)) {
                 fatal(Messages.message("client.headlessDebug"));
             }
-        }
+        
 
         // Get the splash screen up early on to show activity.
         gui = (this.headless) ? new GUI(this, scale)
@@ -180,6 +180,7 @@ public final class FreeColClient {
                           .addName("%dir%", baseDirectory.getName()))
                 + ((ioeMessage == null) ? "" : "\n" + ioeMessage));
         }
+        
         ResourceManager.setBaseMapping(baseData.getResourceMapping());
 
         // Once the basic resources are in place construct other things.
@@ -202,7 +203,7 @@ public final class FreeColClient {
         //   - resources in the default "classic" ruleset,
         //   - resources in the default actions
         //
-        // FIXME: probably should not need to load "classic", but there
+        //  probably should not need to load "classic", but there
         // are a bunch of things in there (e.g. order buttons) that first
         // need to move to base because the action manager requires them.
         //
@@ -373,7 +374,7 @@ public final class FreeColClient {
             clop.merge(userOptions);
         }
 
-        //logger.info("Final client options: " + clop.toString());
+        
         return clop;
     }
 

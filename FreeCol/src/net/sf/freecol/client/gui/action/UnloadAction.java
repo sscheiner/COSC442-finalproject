@@ -31,7 +31,12 @@ import net.sf.freecol.common.model.Unit;
  */
 public class UnloadAction extends MapboardAction {
 
-    public static final String id = "unloadAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6962222138923111228L;
+
+	public static final String id = "unloadAction";
 
     private Unit unit = null;
 

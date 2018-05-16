@@ -29,7 +29,11 @@ import net.sf.freecol.client.FreeColClient;
  */
 public class RenameAction extends UnitAction {
 
-    public static final String id = "renameAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 9189532371764513396L;
+	public static final String id = "renameAction";
 
 
     /**

@@ -29,7 +29,11 @@ import net.sf.freecol.client.FreeColClient;
  */
 public class WaitAction extends UnitAction {
 
-    public static final String id = "waitAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3683351821091256445L;
+	public static final String id = "waitAction";
 
 
     /**

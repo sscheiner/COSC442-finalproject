@@ -29,7 +29,11 @@ import net.sf.freecol.client.FreeColClient;
  */
 public class ShowDifficultyAction extends FreeColAction {
 
-    public static final String id = "difficultyAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3733677218252862049L;
+	public static final String id = "difficultyAction";
 
 
     /**

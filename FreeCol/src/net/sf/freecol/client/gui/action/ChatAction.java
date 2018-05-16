@@ -31,7 +31,11 @@ import net.sf.freecol.client.FreeColClient;
  */
 public class ChatAction extends FreeColAction {
 
-    public static final String id = "chatAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2011277476456005733L;
+	public static final String id = "chatAction";
 
 
     /**

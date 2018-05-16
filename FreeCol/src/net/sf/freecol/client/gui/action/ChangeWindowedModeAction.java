@@ -30,7 +30,11 @@ import net.sf.freecol.client.gui.GUI;
  */
 public class ChangeWindowedModeAction extends SelectableAction {
 
-    public static final String id = "changeWindowedModeAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7786575022788336302L;
+	public static final String id = "changeWindowedModeAction";
 
 
     /**

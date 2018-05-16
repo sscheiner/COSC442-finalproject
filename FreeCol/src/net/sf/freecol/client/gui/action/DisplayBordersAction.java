@@ -32,7 +32,11 @@ import net.sf.freecol.client.FreeColClient;
  */
 public class DisplayBordersAction extends SelectableAction {
 
-    public static final String id = "displayBordersAction";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2901497155269781904L;
+	public static final String id = "displayBordersAction";
 
 
     /**
