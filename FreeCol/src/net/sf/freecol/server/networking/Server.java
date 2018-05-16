@@ -127,9 +127,10 @@ public final class Server extends Thread {
      *               <code>Connection</code>
      * @return The <code>Connection</code>.
      */
-    public Connection getConnection(Socket socket) {
+    	//method removed because it had no references, but may be used later (found using UCDetector)
+    /*public Connection getConnection(Socket socket) {
         return connections.get(socket);
-    }
+    }*/
 
     /**
      * Adds a (usually Dummy)Connection into the hashmap.
