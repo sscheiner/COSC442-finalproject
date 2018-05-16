@@ -808,6 +808,14 @@ public final class FreeColClient {
             gui.showHighScoresPanel(null, askServer().getHighScores());
         }
     }
+    
+    /**
+     * ayy lmao
+     */
+    public void cheat(){
+    	
+    }
+    
 
     /**
      * Quits the application without any questions.

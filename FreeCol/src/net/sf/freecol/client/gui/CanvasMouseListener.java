@@ -23,6 +23,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -118,8 +121,21 @@ public final class CanvasMouseListener implements ActionListener, MouseListener 
      */
     @Override
     public void mousePressed(MouseEvent e) {
-        if (!e.getComponent().isEnabled()) return;
+    	
+        //test write to file
+    	try {
+    		BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\cshome\\sschei7\\documents\\mouseEventTest.txt", true));
+     		writer.append("mouse clicked\n");
 
+			writer.close();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+    	
+    	
+        if (!e.getComponent().isEnabled()) return;
+  
         int me = e.getButton();
         if (e.isPopupTrigger()) me = MouseEvent.BUTTON3;
         Tile tile = canvas.convertToMapTile(e.getX(), e.getY());

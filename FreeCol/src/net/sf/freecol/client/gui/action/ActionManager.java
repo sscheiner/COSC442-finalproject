@@ -78,6 +78,7 @@ public class ActionManager extends OptionGroup {
         add(new ChangeAction(freeColClient));
         add(new ChangeWindowedModeAction(freeColClient));
         add(new ChatAction(freeColClient));
+        add(new CheatAction(freeColClient));
         add(new ClearOrdersAction(freeColClient));
         for (PanelType panelType : PanelType.values()) {
             add(new ColopediaAction(freeColClient, panelType));
